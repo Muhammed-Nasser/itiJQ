@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Box Animator</title>
+		<style type="text/css">
+			.box{
+				width:100px;
+				height:100px;
+				position: absolute;
+				background-color:red;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="box"></div>
+
+		<script>
+
+				//PlugIn To let user set color
+			$.fn.greenify= function (option){
+				this.css("background-color", option);
+			}
+			color1= prompt("Enter the 1st color")
+			color2= prompt("Good Enter the 2nd color")
+			color3= prompt("Good Enter the 3rd color")
+			color4= prompt("Good Enter the 4td color")
+
+			$("div").animate({
+				left: "600px",
+				width: "+=50px",
+				height: "+=50px",
+			},2000, function(){
+				$("div").greenify(color1)
+			});
+			$("div").animate({
+				bottom: "0px",
+				width: "100px",
+				height: "100px",
+			},2000, function(){
+				$("div").greenify(color2)
+			});
+			$("div").animate({
+				left: "0px",
+				width: "+=50px",
+				height: "+=50px",
+			},2000, function(){
+				$("div").greenify(color3)
+			});
+			$("div").animate({
+				top: "0px",
+				width: "100px",
+				height: "100px",
+			},2000, function(){
+				$("div").greenify(color4)
+			});
+
+		</script>
+	</body>
+
+
+</html>

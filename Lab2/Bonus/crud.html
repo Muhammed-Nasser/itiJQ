@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CRUD</title>
+		<style type="text/css">
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<h3>Add New Person</h3>
+		<label>Name</label>
+		<input type="text" id="name" name="name"/>
+		<br><br>
+		<label>Age</label>
+		<input type="text" id="age" name="age"/>
+		<br><br>
+		<button id="add">Add new Person</button>
+		<br>
+		<hr>
+		<h3>Persons List</h3>
+		<input type="text" placeholder="search" id="search-item"/>
+		<br><br>
+		<table id="persons-list" border="1" cellpadding="25">
+			<thead>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Delete</th>
+			</thead>
+			<tbody>
+               
+				
+			</tbody>
+		</table>
+
+		<script>
+
+
+			$(document).ready(function(){
+						var name, age,num=0
+			 $("#add").on("click", function(){
+				name= $("#name").val()
+				age= $("#age").val()
+				var r= $(`<tr class="row${num}"><td class="name">${name}</td><td>${age}</td><td><button type="button" id="delete-btn">delete</button></td></tr>`);
+        		$("tbody").append(r);
+				console.log($("#delete-btn")[0])
+
+			 num = num+1
+			});
+			
+			$("#persons-list").on('click', '#delete-btn', function () {
+				$(this).closest("tr").remove();
+			});
+
+			$("#search-item").on("keyup", function() {
+			var value = $(this).val().toLowerCase();
+			$("#persons-list tr").filter(function() {
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		})
+
+			
+		})
+		</script>
+	</body>	
+</html>

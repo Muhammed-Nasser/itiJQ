@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Box Generator</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<style type="text/css">
+			div{
+				width:100px;
+				height:100px;
+			}
+			.red{
+				background-color:red;
+			}
+			.blue{
+				background-color:blue;
+				
+			}
+			.green{
+				background-color:green;
+				
+			}
+			.orange{
+				background-color:orange;
+			}
+			
+		</style>
+	</head>
+	<body id="body">
+		<div id="0" class="red"></div>
+
+		<script>
+		
+				let arr= ["red","blue","orange","green"];
+				let arr2=["red","blue"]
+				let count = 1
+				let divId =0
+				
+				$(document).ready(function(){
+					$(document).on({
+						mouseenter : function(){
+							let currentDiv = parseInt($(this).attr("id"))
+							$(this).css("background-color", arr2[currentDiv+1])
+						},
+						mouseleave : function(){
+							let currentDiv = parseInt($(this).attr("id"))
+							$(this).css("background-color", arr2[currentDiv])
+						},
+
+					},"div");
+					$(document).on("click", "div", function(){
+						let currentDiv = parseInt($(this).attr("id"))
+
+						if (currentDiv == divId){
+								divId++
+								let newDiv = $("<div></div>")
+								newDiv.attr("id", divId)
+								newDiv.attr("class", arr2[currentDiv +1])
+								$("body").append(newDiv)
+								count ++
+								if(count ==4){count=0}
+								arr2.push(arr[count])
+						}
+					})
+
+				// 	"click": function(){
+				// 		let currentDiv = parseInt($(this).attr("id"))
+				// 			
+									
+				// 	        }
+				//    	}
+				//   })
+				})	
+		</script>
+	</body>
+</html>

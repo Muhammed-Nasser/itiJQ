@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Font Resizer</title>
+	<style type="text/css">
+		.box{
+			width:100px;
+			height:100px;
+			background-color:black;
+			position: absolute;
+		}
+		button{
+			padding:10px 20px 10px 20px;
+		}
+		.content {
+			font-size: 15px;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<p class="content">Hello, Open Sourcians</p>
+	<button id="decrease"> - </button>
+	<button id="increase"> + </button>
+	<br>
+	<p class="error"></p>
+
+	<script>
+		$(document).ready(function() {
+			var resize = new Array('p', '.content');
+			resize = resize.join(',');
+
+			var originalFontNumber
+			$("#increase").click(function() {
+				
+				if (originalFontNumber >= 30){
+					$(".error").text("You reach to max size");
+					$(".error").show() 
+					return;}
+				else{
+					$(".error").hide()
+				var originalFontSize = $(resize).css('font-size');
+				originalFontNumber = parseFloat(originalFontSize, 10);
+				var newFontSize = originalFontNumber * 1.2;
+				$(resize).css('font-size', newFontSize);
+				console.log(originalFontNumber)
+				}
+			});
+
+
+			$("#decrease").click(function() {
+				if (originalFontNumber <= 15)
+				{
+					$(".error").text("Decrease Not Allowed");
+					$(".error").show() 
+					return;	
+				}
+				else{
+					$(".error").hide()
+				var originalFontSize = $(resize).css('font-size');
+				originalFontNumber = parseFloat(originalFontSize, 10);
+				var newFontSize = originalFontNumber * 0.8;
+				$(resize).css('font-size', newFontSize);}
+			});
+
+			});
+	</script>
+</body>
+</html>
